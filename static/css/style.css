@@ -320,6 +320,7 @@ main {
 .section-heading {
     font-size: 2rem;
     color: #495057;
+    letter-spacing: -1px;
 }
 
 .section-heading::after {
@@ -471,8 +472,64 @@ card {
 .project-second .project-tools-used{
     left: 0;
 }
+/*About me section*/
+.about-section {
+    margin-left: 3vw;
+}
+
+.about-section-content {
+    margin-top: 3vh;
+}
+
+
+.about-me-description {
+    line-height: 1.7;
+    color: #868e96;
+    width: 60%;
+    font-size: 18px;
+}
+
+.about-tools {
+    margin-top: 3vh;
+}
+
+.about-tools h2 {
+    color: #495057;
+}
+
+
+.tools-icons {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 4vh;
+    row-gap: 7vh;
+}
+
+.tools-icons li {
+    flex: 1 0 21%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    font-family: 'Fira Mono', monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #868e96;
+}
+
+.filter-gray {
+    filter: invert(19%) sepia(4%) saturate(1621%) hue-rotate(169deg) brightness(101%) contrast(90%);
+}
+
 
 footer {
     padding: 20px;
     color: #868e96;
 }
+
+
