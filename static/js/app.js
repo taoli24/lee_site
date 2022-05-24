@@ -27,9 +27,23 @@ const navSlide = function () {
     })
 }
 
+const scrollDownArrow = function () {
+    const arrow = document.querySelector('.scroll-down-arrow');
+    const projectSection = document.querySelector('.project-section');
+
+    arrow.addEventListener('click', (e)=>{
+        projectSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+
+        })
+    })
+}
+
 const app = () =>{
     AOS.init();
     navSlide();
+    scrollDownArrow();
 }
 
 app();
