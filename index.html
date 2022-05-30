@@ -21,6 +21,7 @@
                 <li class="nav-item"><a href="#" class="nav-item-link">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">Project</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">About Me</a></li>
+                <li class="nav-item"><a href="#" class="nav-item-link">Tools</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">Contact</a></li>
             </ul>
             <div class="burger">
@@ -113,10 +114,10 @@
                 </div>
             </div>
         </section>
-        <section class="about-section">
+        <section class="about-section indent-left">
             <h2 data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="section-heading"><span
                     class="number">02. </span>About me:</h2>
-            <div class="about-section-content">
+            <div class="about-section-content" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
                 <div class="about-me-description">
                     <p>Hi, My name is Li. I am a canberra based developer who has a strong passion for web development
                         and
@@ -135,8 +136,9 @@
         </section>
         <section class="tools-section">
             <div class="about-tools">
-                <h2 class="section-heading">Tools I have worked with:</h2>
-                <ul class="tools-icons">
+                <h2 class="section-heading" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000"><span
+                        class="number">03. </span>Tools I have worked with:</h2>
+                <ul class="tools-icons" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
                     <li><img src="static/icon/icons8-html-5.svg" alt="" class="filter-gray">HTML5</li>
                     <li><img src="static/icon/icons8-css3.svg" alt="" class="filter-gray">CSS3</li>
                     <li><img src="static/icon/icons8-python.svg" alt="" class="filter-gray">Python</li>
@@ -150,12 +152,38 @@
                 </ul>
             </div>
         </section>
+        <section class="contact-section indent-left">
+            <h2 data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="section-heading"><span
+                    class="number">04. </span>Want to connect?</h2>
+            <div class="contact-content mt-4" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+                <div class="contact-description">
+                    <p><span>Hey!</span> Thank you for visiting my portfolio website. If you ever want to have a quick
+                        chat about
+                        something or just want to grab a coffee together, you can send me a message here.</p>
+
+
+                </div>
+
+
+                <form method="post" class="contact-form">
+                    <input type="text" name="name" id="name" placeholder="name">
+                    <input type="email" name="email" id="email" placeholder="email">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="message"></textarea>
+                    <button type="submit" class="btn btn-glow">send message</button>
+                </form>
+            </div>
+
+        </section>
+
     </main>
     <footer>
-        <p>&copy; Design and developed by Li Tao 2022</p>
+        <div class="social">
+            <a href="#"><i class="fa-brands fa-github-square"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href=""><i class="fa-brands fa-instagram-square"></i></a>
+        </div>
+        <p class="mt-4">&copy; Design and developed by Li Tao 2022</p>
     </footer>
-
-
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

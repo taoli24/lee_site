@@ -7,6 +7,7 @@
 html {
     -webkit-text-size-adjust: 100%;
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,6 +32,45 @@ body {
     align-items: center;
     gap: 20vh;
 }
+
+/*Reusable css*/
+
+.indent-left {
+    margin-left: 4vw;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
+
+.btn {
+    display: inline-block;
+    color: #343a40;
+    text-decoration: none;
+    padding: 10px 40px;
+    border: 2px solid #343a40;
+    /*border-radius: 3px;*/
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'Fira Mono', monospace;
+    font-weight: bold;
+}
+
+.btn-glow:hover {
+    animation: pulsate 1s ease-in-out;
+}
+
+@keyframes pulsate {
+    0% {
+        box-shadow: 0 0 25px rgba(52, 58, 64, 0.16), 0 0 50px #91a7ff;
+    }
+}
+
+.filter-gray {
+    filter: invert(19%) sepia(4%) saturate(1621%) hue-rotate(169deg) brightness(101%) contrast(90%);
+}
+
+/*Nav bar section*/
 
 nav {
     position: fixed;
@@ -203,7 +243,7 @@ canvas {
 }
 
 .description {
-    line-height: 1.7;
+    line-height: 1.8;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -238,28 +278,7 @@ canvas {
     color: #e9ecef;
 }
 
-.btn {
-    display: inline-block;
-    color: #343a40;
-    text-decoration: none;
-    padding: 10px 50px;
-    border: 2px solid #343a40;
-    border-radius: 3px;
-    /*text-transform: uppercase;*/
-    font-size: 14px;
-    font-family: 'Fira Mono', monospace;
-    font-weight: bold;
-}
 
-.btn-glow:hover {
-    animation: pulsate 1s ease-in-out;
-}
-
-@keyframes pulsate {
-    0% {
-        box-shadow: 0 0 25px rgba(52, 58, 64, 0.16), 0 0 50px #91a7ff;
-    }
-}
 
 /*arrow animation*/
 .bounce-arrow {
@@ -277,7 +296,7 @@ canvas {
 
 
 .bounce-arrow:hover span {
-    /*animation: bounce 2s ease infinite;*/
+    cursor: pointer;
 }
 
 .arrow-icon {
@@ -426,7 +445,7 @@ card {
     font-weight: 400;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     color: #e9ecef;
-    line-height: 1.6;
+    line-height: 1.8;
     font-size: 1.6rem;
 }
 
@@ -472,10 +491,8 @@ card {
 .project-second .project-tools-used{
     left: 0;
 }
+
 /*About me section*/
-.about-section {
-    margin-left: 3vw;
-}
 
 .about-section-content {
     margin-top: 3vh;
@@ -483,10 +500,10 @@ card {
 
 
 .about-me-description {
-    line-height: 1.7;
+    line-height: 1.8;
     color: #868e96;
     width: 60%;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .about-tools {
@@ -509,7 +526,7 @@ card {
 }
 
 .tools-icons li {
-    flex: 1 0 21%;
+    flex: 1 0 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -522,15 +539,72 @@ card {
     color: #868e96;
 }
 
-.filter-gray {
-    filter: invert(19%) sepia(4%) saturate(1621%) hue-rotate(169deg) brightness(101%) contrast(90%);
+
+
+
+/* Contact section */
+.contact-content {
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    grid-column-gap: 5vw;
+    line-height: 1.8;
+    color: #868e96;
 }
 
+.contact-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.contact-content form button {
+    align-self: flex-start;
+}
+
+.contact-content form input,
+.contact-content form textarea{
+    padding: 8px 16px;
+    font-family: 'Fira Mono', monospace;
+    border: 2px solid #868e96;
+    /*border-radius: 3px;*/
+}
+
+.contact-content form input:hover,
+.contact-content form input:focus,
+.contact-content form textarea:hover,
+.contact-content form textarea:focus{
+    outline: none;
+    border: 2px solid #495057;
+}
+
+.contact-content span {
+    font-weight: 700;
+    color: #f06595;
+    font-size: 2rem;
+}
 
 footer {
     padding: 4rem;
     color: #868e96;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 2vw;
+    color: #495057;
+    font-size: 28px;
+}
+
+.social i {
+    color: #495057;
+}
+
+.social i:hover {
+    color: #343a40;
 }
 
 
