@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+</header>
+<main>
+    <section class="login-section">
+        <h1 class="section-heading indent-left">Welcome back!</h1>
+        <div class="login-card mt-4">
+
+            <form method="post" novalidate class="my-form">
+                {{ form.csrf_token }}
+                <div>
+                    <p>{{ form.email.label }}</p>
+                    {% if form.email.errors %}
+                        <p class="my-errors">* {{ form.email.errors[0] }}</p>
+                    {% endif %}
+                    {{ form.email }}
+                </div>
+                <div>
+                    <p>{{ form.password.label }}</p>
+                    {% if form.password.errors %}
+                        <p class="my-errors">* {{ form.password.errors[0] }}</p>
+                    {% endif %}
+                    {{ form.password }}
+                </div>
+                <ul class="actions">
+                    <li>{{ form.submit }}</li>
+                    <li><input type="reset" value="Clear" class="btn btn-glow"/></li>
+                </ul>
+            </form>
+        </div>
+
+    </section>
+</main>
+{% include 'footer.html' %}

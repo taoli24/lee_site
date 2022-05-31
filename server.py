@@ -1,16 +1,138 @@
-# This is a sample Python script.
+from flask import Flask, render_template, request, redirect, url_for, abort, flash
+from flask_sqlalchemy import SQLAlchemy
+from flask_ckeditor import CKEditor
+import datetime as dt
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from functools import wraps
+from forms import LoginForm, PostForm
+import itertools
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogs.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'thisissecret'
+app.config['CKEDITOR_ENABLE_CODESNIPPET'] = True
+
+db = SQLAlchemy(app)
+CKEditor(app)
+login_manager = LoginManager(app)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class User(UserMixin, db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+    name = db.Column(db.String(250), nullable=False)
+    role = db.Column(db.String, nullable=False)
+    posts = db.relationship('BlogPost', back_populates='author')
 
 
-# Press the green button in the gutter to run the script.
+class BlogPost(db.Model):
+    __tablename__ = 'blog_post'
+    id = db.Column(db.Integer, primary_key=True)
+    author_id = db.Column(db.String(250), db.ForeignKey('users.id'))
+    author = db.relationship('User', back_populates='posts')
+    title = db.Column(db.String(250), nullable=False)
+    subtitle = db.Column(db.String(250), nullable=False)
+    body = db.Column(db.String(250), nullable=False)
+    date = db.Column(db.String(250), nullable=False)
+    image = db.Column(db.String(250), nullable=False)
+    tags = db.Column(db.String(250), nullable=True)
+
+
+# def create_admin():
+#     new_user = User(
+#         email='gujie713@gmail.com',
+#         name='Li Tao',
+#         role='Admin',
+#         password=generate_password_hash('password', method="pbkdf2:sha256", salt_length=8)
+#     )
+#     db.session.add(new_user)
+#     db.session.commit()
+#
+#
+# create_admin()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+# admin-only decorator
+def admin_only(function):
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        if current_user.is_authenticated:
+            if current_user.id == 1:
+                return function(*args, **kwargs)
+            else:
+                return abort(403)
+        else:
+            return abort(403)
+
+    return wrapper
+
+
+@app.route('/', methods=['POST', 'GET'])
+def home():
+    if request.method == 'GET':
+        return render_template('index.html')
+    else:
+        # contact function
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        # todo: implement send message function using smtplib
+        print(name, email, message)
+
+        return render_template('index.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        email = login_form.email.data
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, login_form.password.data):
+                login_user(user)
+                return redirect(url_for('home'))
+            else:
+                flash("Incorrect password")
+                return render_template('login.html', form=login_form)
+        else:
+            flash("Email address you've entered does not exist in our database.")
+            return render_template('login.html', form=login_form)
+    return render_template('login.html', form=login_form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+
+@app.route('/make_post', methods=['GET', 'POST'])
+@admin_only
+def make_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        kwargs = dict(itertools.islice(form.data.items(), 5))
+        kwargs['date'] = dt.datetime.now().strftime('%m/%d/%Y')
+        kwargs['author_id'] = current_user.id
+        new_post = BlogPost(**kwargs)
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect(url_for('blogs'))
+    return render_template('make_post.html', form=form)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    app.run(debug=True)

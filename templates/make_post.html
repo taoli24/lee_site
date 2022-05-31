@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+</header>
+<main>
+    <section class="post-section">
+        {% if page_title %}
+            <h1 class="section-heading indent-left">{{ page_title }}</h1>
+        {% else %}
+            <h1 class="section-heading indent-left">New Post:</h1>
+        {% endif %}
+
+        <form method="post" novalidate>
+
+            {{ form.csrf_token }}
+            {{ form.title.label }}
+            {% if form.title.errors %}
+                <span class="my-errors">* {{ form.title.errors[0] }}</span>
+            {% endif %}
+            {{ form.title }}
+
+            {{ form.subtitle.label }}
+            {% if form.subtitle.errors %}
+                <span class="my-errors">* {{ form.subtitle.errors[0] }}</span>
+            {% endif %}
+            {{ form.subtitle }}
+
+            {{ form.tags.label }}
+            {% if form.tags.errors %}
+                <span class="my-errors">* {{ form.tags.errors[0] }}</span>
+            {% endif %}
+            {{ form.tags }}
+
+            {{ form.image.label }}
+            {% if form.image.errors %}
+                <span class="my-errors">* {{ form.image.errors[0] }}</span>
+            {% endif %}
+            {{ form.image }}
+
+            {{ form.body.label }}
+            {% if form.body.errors %}
+                <span class="my-errors">* {{ form.body.errors[0] }}</span>
+            {% endif %}
+            {{ form.body }}
+
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='body', custom_config="uiColor: '#9AB8F3'") }}
+            <ul class="actions" style="margin-top: 20px">
+                <li>{{ form.submit }}</li>
+                <li><input type="reset" value="Clear"/></li>
+            </ul>
+        </form>
+    </section>
+</main>
+
+
+{% include 'footer.html' %}

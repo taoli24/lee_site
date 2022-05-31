@@ -182,8 +182,11 @@ nav {
 
 /*@media screen and (max-width: 768px) {}*/
 header {
-    height: 100vh !important;
     width: inherit;
+}
+
+.header-content {
+    height: 90vh !important;
 }
 
 .header-content {
@@ -192,6 +195,8 @@ header {
     align-items: flex-start;
     justify-content: center;
     gap: 100px;
+    position: relative;
+    top: -2vh;
 }
 
 .header-animation-container {
@@ -207,8 +212,8 @@ canvas {
 }
 
 .name {
-    position: absolute;
-    top: 10vh;
+    position: relative;
+    top: 18vh;
     color: #868e96;
     font-size: 1.8rem;
     font-family: 'Fira Mono', monospace;
@@ -552,7 +557,7 @@ card {
     color: #868e96;
 }
 
-.contact-content form {
+.my-form {
     display: flex;
     flex-direction: column;
     gap: 2vh;
@@ -562,18 +567,15 @@ card {
     align-self: flex-start;
 }
 
-.contact-content form input,
-.contact-content form textarea{
+.form-input{
     padding: 8px 16px;
     font-family: 'Fira Mono', monospace;
     border: 2px solid #868e96;
     /*border-radius: 3px;*/
 }
 
-.contact-content form input:hover,
-.contact-content form input:focus,
-.contact-content form textarea:hover,
-.contact-content form textarea:focus{
+.form-input:hover,
+.form-input:focus {
     outline: none;
     border: 2px solid #495057;
 }
@@ -608,3 +610,30 @@ footer {
 }
 
 
+/* login.html */
+.login-card {
+    width: 70%;
+    margin: 4vh auto;
+    padding: 6vh 4vw;
+    box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+
+.my-form div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+}
+
+.my-form ul {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.my-form li {
+    list-style: none;
+}
+
+.my-errors {
+    color: crimson;
+}
