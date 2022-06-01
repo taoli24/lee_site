@@ -5,12 +5,12 @@ from flask_ckeditor import CKEditorField
 
 
 class PostForm(FlaskForm):
-    title = StringField(label='Blog Post Title', validators=[DataRequired()], render_kw={'class': 'my-2'})
-    subtitle = StringField(label='Subtitle', validators=[DataRequired()], render_kw={'class': 'my-2'})
-    tags = StringField(label='Tags', validators=[DataRequired()], render_kw={'class': 'my-2'})
-    image = StringField(label='Blog Image URL', validators=[DataRequired(), URL()], render_kw={'class': 'my-2'})
+    title = StringField(label='Blog Post Title', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'title'})
+    subtitle = StringField(label='Subtitle', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'subtitle'})
+    tags = StringField(label='Tags', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'tags separate by space'})
+    image = StringField(label='Blog Image URL', validators=[DataRequired(), URL()], render_kw={'class': 'form-input', 'placeholder': 'image URL'})
     # author = StringField(label='Author', validators=[DataRequired()], render_kw={'class': 'my-2'})
-    body = CKEditorField(label='Blog Content', validators=[DataRequired()], render_kw={'class': 'my-2'})
+    body = CKEditorField(label='Blog Content', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'write stuff here'})
     submit = SubmitField(label='Submit Post', render_kw={'class': 'btn btn-glow'})
 
 

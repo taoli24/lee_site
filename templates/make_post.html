@@ -7,47 +7,55 @@
         {% else %}
             <h1 class="section-heading indent-left">New Post:</h1>
         {% endif %}
+        <div class="mt-4">
 
-        <form method="post" novalidate>
 
-            {{ form.csrf_token }}
-            {{ form.title.label }}
-            {% if form.title.errors %}
-                <span class="my-errors">* {{ form.title.errors[0] }}</span>
-            {% endif %}
-            {{ form.title }}
+            <form method="post" novalidate class="my-form post-form">
 
-            {{ form.subtitle.label }}
-            {% if form.subtitle.errors %}
-                <span class="my-errors">* {{ form.subtitle.errors[0] }}</span>
-            {% endif %}
-            {{ form.subtitle }}
-
-            {{ form.tags.label }}
-            {% if form.tags.errors %}
-                <span class="my-errors">* {{ form.tags.errors[0] }}</span>
-            {% endif %}
-            {{ form.tags }}
-
-            {{ form.image.label }}
-            {% if form.image.errors %}
-                <span class="my-errors">* {{ form.image.errors[0] }}</span>
-            {% endif %}
-            {{ form.image }}
-
-            {{ form.body.label }}
-            {% if form.body.errors %}
-                <span class="my-errors">* {{ form.body.errors[0] }}</span>
-            {% endif %}
-            {{ form.body }}
-
-            {{ ckeditor.load() }}
-            {{ ckeditor.config(name='body', custom_config="uiColor: '#9AB8F3'") }}
-            <ul class="actions" style="margin-top: 20px">
-                <li>{{ form.submit }}</li>
-                <li><input type="reset" value="Clear"/></li>
-            </ul>
-        </form>
+                {{ form.csrf_token }}
+                <div>
+                    {{ form.title.label }}
+                    {% if form.title.errors %}
+                        <span class="my-errors">* {{ form.title.errors[0] }}</span>
+                    {% endif %}
+                    {{ form.title }}
+                </div>
+                <div>
+                    {{ form.subtitle.label }}
+                    {% if form.subtitle.errors %}
+                        <span class="my-errors">* {{ form.subtitle.errors[0] }}</span>
+                    {% endif %}
+                    {{ form.subtitle }}
+                </div>
+                <div>
+                    {{ form.tags.label }}
+                    {% if form.tags.errors %}
+                        <span class="my-errors">* {{ form.tags.errors[0] }}</span>
+                    {% endif %}
+                    {{ form.tags }}
+                </div>
+                <div>
+                    {{ form.image.label }}
+                    {% if form.image.errors %}
+                        <span class="my-errors">* {{ form.image.errors[0] }}</span>
+                    {% endif %}
+                    {{ form.image }}
+                </div>
+                <div>
+                    {{ form.body.label }}
+                    {% if form.body.errors %}
+                        <span class="my-errors">* {{ form.body.errors[0] }}</span>
+                    {% endif %}
+                    {{ form.body }}
+                </div>
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='body', custom_config="uiColor: '#868e96'") }}
+                <ul class="actions" style="margin-top: 20px">
+                    <li>{{ form.submit }}</li>
+                    <li><input type="reset" value="Clear" class="btn btn-glow"/></li>
+                </ul>
+            </form>
+        </div>
     </section>
 </main>
 

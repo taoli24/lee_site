@@ -637,3 +637,11 @@ footer {
 .my-errors {
     color: crimson;
 }
+
+/* make_post.html */
+
+.post-form {
+    width: 80%;
+    margin: 0 auto;
+
+}
