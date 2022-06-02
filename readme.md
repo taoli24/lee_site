@@ -1,6 +1,6 @@
 ### To do:
 
-- Add blog list page
+- [x] Add blog list page
 - Add blog page show individual blogs
 - [x] Add login page for site owner
 - Add animation to nav links

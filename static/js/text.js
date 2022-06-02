@@ -17,7 +17,7 @@ export class Text {
 
         const myText = str;
         const fontWidth = 500;
-        const fontSize = this.canvas.height > 600? 500: this.canvas.height;
+        const fontSize = 475;
         const fontName = 'Oswald';
 
         this.ctx.clearRect(0, 0, stageWidth, stageHeight);

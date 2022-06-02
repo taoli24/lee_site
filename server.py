@@ -134,5 +134,39 @@ def make_post():
     return render_template('make_post.html', form=form)
 
 
+@app.route('/all_posts')
+def all_posts():
+    page = request.args.get('page', 1, type=int)
+    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page=page, per_page=4)
+
+    return render_template('posts.html', posts=posts)
+
+
+@app.route('/posts/<int:post_id>', methods=['POST', 'GET'])
+def view_post():
+    pass
+
+
+@app.route('/delete/<int:post_id>')
+@admin_only
+def delete(post_id):
+    post = BlogPost.query.get(post_id)
+
+    db.session.delete(post)
+    db.session.commit()
+
+    return redirect(url_for('blogs'))
+
+
+@app.route('/tag')
+def tag_articles():
+    page = request.args.get('page', 1, type=int)
+    tag = request.args.get('tag')
+    posts = BlogPost.query.where(BlogPost.tags.like(f"%{tag}%")).order_by(BlogPost.id.desc()).paginate(page=page,
+                                                                                                       per_page=4)
+
+    return render_template('posts.html', posts=posts, tag=tag)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

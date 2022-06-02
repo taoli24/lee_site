@@ -6,7 +6,7 @@
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Mono:wght@400;500&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Mono:wght@400;500&family=Pacifico&display=swap"
           rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <script src="https://kit.fontawesome.com/696238c254.js" crossorigin="anonymous"></script>
@@ -16,9 +16,14 @@
 <body>
 <div class="content">
     <header>
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}" class="logo"><span>Li Tao</span></a>
+        </div>
         <nav>
+
             <ul class="nav-links">
                 <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-item-link">Home</a></li>
+                <li class="nav-item"><a href="{{ url_for('all_posts') }}" class="nav-item-link">Blogs</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">Project</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">About Me</a></li>
                 <li class="nav-item"><a href="#" class="nav-item-link">Contact</a></li>

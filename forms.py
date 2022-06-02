@@ -10,7 +10,7 @@ class PostForm(FlaskForm):
     tags = StringField(label='Tags', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'tags separate by space'})
     image = StringField(label='Blog Image URL', validators=[DataRequired(), URL()], render_kw={'class': 'form-input', 'placeholder': 'image URL'})
     # author = StringField(label='Author', validators=[DataRequired()], render_kw={'class': 'my-2'})
-    body = CKEditorField(label='Blog Content', validators=[DataRequired()], render_kw={'class': 'form-input', 'placeholder': 'write stuff here'})
+    body = CKEditorField(label='Blog Content', validators=[DataRequired()], render_kw={'class': 'form-input ck-text', 'placeholder': 'write stuff here'})
     submit = SubmitField(label='Submit Post', render_kw={'class': 'btn btn-glow'})
 
 
