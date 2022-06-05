@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Li Tao</title>
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,7 @@
     <script src="https://kit.fontawesome.com/696238c254.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
+    {{ ckeditor.load_code_theme() }}
 </head>
 <body>
 <div class="content">
@@ -20,13 +22,12 @@
             <a href="{{ url_for('home') }}" class="logo"><span>Li Tao</span></a>
         </div>
         <nav>
-
             <ul class="nav-links">
                 <li class="nav-item"><a href="{{ url_for('home') }}" class="nav-item-link">Home</a></li>
                 <li class="nav-item"><a href="{{ url_for('all_posts') }}" class="nav-item-link">Blogs</a></li>
-                <li class="nav-item"><a href="#" class="nav-item-link">Project</a></li>
-                <li class="nav-item"><a href="#" class="nav-item-link">About Me</a></li>
-                <li class="nav-item"><a href="#" class="nav-item-link">Contact</a></li>
+                <li class="nav-item"><a href="{{ url_for('home') }}#project-section" class="nav-item-link">Project</a></li>
+                <li class="nav-item"><a href="{{ url_for('home') }}#about-section" class="nav-item-link">About Me</a></li>
+                <li class="nav-item"><a href="{{ url_for('home') }}#contact-section" class="nav-item-link">Contact</a></li>
                 {% if current_user.is_authenticated %}
                     <li class="nav-item"><a href="{{ url_for('make_post') }}" class="nav-item-link">New Post</a></li>
                     <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-item-link">Logout</a></li>

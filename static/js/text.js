@@ -15,9 +15,27 @@ export class Text {
         this.canvas.width = stageWidth;
         this.canvas.height = stageHeight;
 
+        const viewRatio = window.innerWidth/window.innerHeight;
         const myText = str;
         const fontWidth = 500;
-        const fontSize = 475;
+        let fontSize;
+        // const fontSize = window.innerWidth > 768? 465: 230;
+        //Mobile landscape
+        if (window.innerWidth < 920 && viewRatio > 1){
+            fontSize = 230;
+            // document.querySelector()
+        }
+        // Mobile vertical view
+        else if (window.innerWidth <= 768 && viewRatio < 1){
+            fontSize = 230;
+        }
+        //ipad landscape
+        else if(window.innerWidth < 1200 && viewRatio > 1){
+            fontSize = 300;
+        }
+        else {
+            fontSize = 465;
+        }
         const fontName = 'Oswald';
 
         this.ctx.clearRect(0, 0, stageWidth, stageHeight);

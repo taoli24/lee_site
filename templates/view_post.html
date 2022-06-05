@@ -1,0 +1,17 @@
+{% include 'header.html' %}
+</header>
+<main>
+    <section class="view-post-section">
+        <div class="post-content">
+            <h1 class="post-title view-post-title">Article: {{ post.title }}</h1>
+            <h2 class="post-subtitle">Subtitle: {{ post.subtitle }}</h2>
+            <p class="post-tags">Tagged: {{ post.tags }}</p>
+            <img src="{{ post.image }}" alt="post-image" class="post-image">
+            <p class="post-body">{{ post.body | safe }}</p>
+            <p class="post-info">Posted by <span class="post-author">{{ post.author.name }}</span> on <span
+                    class="post-date">{{ post.date }}</span></p>
+        </div>
+    </section>
+</main>
+
+{% include 'footer.html' %}

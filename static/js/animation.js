@@ -41,8 +41,6 @@ class App {
         this.ctx1.lineWidth = 3;
 
         this.visual.show(this.stageWidth, this.stageHeight);
-
-
     }
 
     animate() {

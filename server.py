@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, abort, flash
+from flask import Flask, render_template, request, redirect, url_for, abort, flash, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_ckeditor import CKEditor
 import datetime as dt
@@ -130,7 +130,7 @@ def make_post():
         new_post = BlogPost(**kwargs)
         db.session.add(new_post)
         db.session.commit()
-        return redirect(url_for('blogs'))
+        return redirect(url_for('all_posts'))
     return render_template('make_post.html', form=form)
 
 
@@ -143,8 +143,10 @@ def all_posts():
 
 
 @app.route('/posts/<int:post_id>', methods=['POST', 'GET'])
-def view_post():
-    pass
+def view_post(post_id):
+    post = BlogPost.query.get(post_id)
+
+    return render_template('view_post.html', post=post)
 
 
 @app.route('/delete/<int:post_id>')
@@ -155,7 +157,7 @@ def delete(post_id):
     db.session.delete(post)
     db.session.commit()
 
-    return redirect(url_for('blogs'))
+    return redirect(url_for('all_posts'))
 
 
 @app.route('/tag')
@@ -168,5 +170,11 @@ def tag_articles():
     return render_template('posts.html', posts=posts, tag=tag)
 
 
+@app.route('/download')
+def download_file():
+    path = './static/files/Li_resume.pdf'
+    return send_file(path, as_attachment=True)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

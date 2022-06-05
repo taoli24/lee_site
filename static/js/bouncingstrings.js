@@ -63,8 +63,10 @@ export class BounceString {
         const blue = (this.rgb & 0xFF) | 0;
 
         const color = `rgb(${red}, ${green}, ${blue})`;
+
+        let line = window.innerWidth > 768? 3: 3;
         ctx.strokeStyle = color;
-        ctx.lineWidth = 3;
+        ctx.lineWidth = line;
         ctx.beginPath();
 
         if (lineCircle(

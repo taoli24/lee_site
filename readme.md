@@ -1,10 +1,11 @@
 ### To do:
 
 - [x] Add blog list page
-- Add blog page show individual blogs
+- [x] Add blog page show individual blogs
 - [x] Add login page for site owner
-- Add animation to nav links
+- [x] Add animation to nav links
 - Implement send email function
 - Wire frames
 - ppt
 - finish this readme
+- make responsive
