@@ -27,7 +27,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20vh;
+    gap: 22vh;
 }
 
 /*********** Reusable css***********/
@@ -150,6 +150,20 @@ body {
     font-weight: bold;
     color: #868e96;
     font-size: 1.2rem;
+}
+
+.white-tint::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(233, 236, 239, 0.3);
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    display: inline-block;
 }
 
 /********** Nav bar section **********/
@@ -317,7 +331,7 @@ header {
 canvas {
     width: 80%;
     height: 100%;
-    /*margin-top: 80px;*/
+    /*margin-top: 4rem;*/
 }
 
 .name {
@@ -396,16 +410,12 @@ canvas {
 
 /*arrow animation*/
 .bounce-arrow {
-    /*position: absolute;*/
     color: #fff;
-    text-decoration: none;
-    text-align: center;
     font-size: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
-
 }
 
 
@@ -473,18 +483,15 @@ card {
 
 .project-image {
     width: 600px;
-    position: relative;
 }
 
 .project-image-overlay {
-    /*display: inline-block;*/
     width: inherit;
     height: 100%;
     background-color: rgba(233, 236, 239, 0.85);
     z-index: 10;
     position: absolute;
     top: 0;
-    left: 0;
     transition: all 0.3s ease-in-out;
     opacity: 0;
     display: flex;
@@ -495,20 +502,6 @@ card {
 
 .project-image-overlay:hover {
     opacity: 1;
-}
-
-.project-image::after {
-    content: "";
-    width: inherit;
-    height: 100%;
-    background-color: rgba(233, 236, 239, 0.3);
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.3s ease-in-out;
-    opacity: 1;
-    display: inline-block;
 }
 
 .project-feature {
@@ -526,7 +519,6 @@ card {
 .project-image img {
     width: inherit;
     border-radius: 3px;
-    position: relative;
 }
 
 .feature-project-title {
@@ -575,15 +567,16 @@ card {
 }
 
 .project-second .project-image {
-    position: absolute;
+    margin-left: auto;
     right: 0;
-    top: 0;
+    top: 5rem;
 }
 
 .project-second .project-feature {
-    position: relative;
+    position: absolute;
     z-index: 1;
     text-align: left;
+    left: 0;
 }
 
 .project-second .project-tools-used {
@@ -591,19 +584,37 @@ card {
 }
 
 /*About me section*/
+.about-section-container {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    column-gap: 8%;
+    margin-top: 4rem;
+
+}
+
+.profile-image-container {
+    position: relative;
+
+
+}
+
+.profile-image-container img {
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
 
 .about-section-content {
-    margin-top: 3vh;
     display: flex;
     flex-direction: column;
     gap: 3vh;
+    justify-content: flex-start;
 }
 
 
 .about-me-description {
     line-height: 1.8;
     color: #868e96;
-    width: 60%;
+    /*width: 60%;*/
     font-size: 1.6rem;
 }
 
@@ -862,7 +873,10 @@ hr {
 }
 
 .page {
-
+    text-decoration: none;
+    color: #343a40;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .page.active {
@@ -916,9 +930,13 @@ pre code.hljs {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .content {
         width: 100%;
+    }
+
+    canvas {
+        margin-top: 4rem;
     }
 
     .post-heading-row {
@@ -1000,14 +1018,21 @@ pre code.hljs {
         font-size: 1.6rem;
     }
 
-    .bounce-arrow {
-        margin-top: -20px;
-    }
-
     /****** about me section ******/
     .about-me-description {
         width: 100%;
     }
+
+    .about-section-container {
+        grid-template-columns: 1fr;
+        grid-row-gap: 3rem;
+    }
+
+    .profile-image-container {
+        width: 70%;
+        margin: 0 auto;
+    }
+
 
     /****** contact section ******/
     .contact-content {

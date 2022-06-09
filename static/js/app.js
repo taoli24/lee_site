@@ -40,53 +40,38 @@ const scrollDownArrow = function () {
     }
 }
 
-// const toggleClass = function (){
-//
-// }
+// set project section style based on viewport width
+const every_nth = (arr, nth) => arr.filter((element, index) => index % nth === nth - 1);
 
-const addRemoveProjectSecond = function () {
+const toggleClass = function (className) {
     const projects = document.querySelectorAll('.project');
     const projects_arr = Array.from(projects);
-    const every_nth = (arr, nth) => arr.filter((element, index) => index % nth === nth - 1);
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 1200) {
-            every_nth(projects_arr, 2).forEach(project => {
-                if (project.classList.contains('project-second')) {
-                    project.classList.remove('project-second');
-                }
-            })
-        } else {
-            if (window.innerWidth > 1200) {
-                every_nth(projects_arr, 2).forEach(project => {
-                    if (project.classList.contains('project-second') !== false) {
-                        project.classList.add('project-second');
-                    }
-                })
+    if (window.innerWidth <= 1200) {
+        every_nth(projects_arr, 2).forEach(project => {
+            if (project.classList.contains(className)) {
+                project.classList.remove(className);
             }
+        });
+    } else {
+        if (window.innerWidth > 1200) {
+            every_nth(projects_arr, 2).forEach(project => {
+                if (project.classList.contains(className) === false) {
+                    project.classList.add(className);
+                }
+            });
         }
+    }
+}
+
+const addRemoveProjectSecond = function () {
+    window.addEventListener('resize', () => {
+        toggleClass('project-second');
     });
 }
 
 const onload = function () {
-    const projects = document.querySelectorAll('.project');
-    const projects_arr = Array.from(projects);
-    const every_nth = (arr, nth) => arr.filter((element, index) => index % nth === nth - 1);
-    document.addEventListener("DOMContentLoaded", function () {
-        if (window.innerWidth <= 1200) {
-            every_nth(projects_arr, 2).forEach(project => {
-                if (project.classList.contains('project-second')) {
-                    project.classList.remove('project-second');
-                }
-            })
-        } else {
-            if (window.innerWidth > 1200) {
-                every_nth(projects_arr, 2).forEach(project => {
-                    if (project.classList.contains('project-second') !== false) {
-                        project.classList.add('project-second');
-                    }
-                })
-            }
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+        toggleClass('project-second');
     });
 }
 

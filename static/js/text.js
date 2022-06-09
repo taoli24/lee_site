@@ -26,7 +26,7 @@ export class Text {
             // document.querySelector()
         }
         // Mobile vertical view
-        else if (window.innerWidth <= 768 && viewRatio < 1){
+        else if (window.innerWidth <= 800 && viewRatio < 1){
             fontSize = 230;
         }
         //ipad landscape
@@ -34,7 +34,7 @@ export class Text {
             fontSize = 300;
         }
         else {
-            fontSize = 465;
+            fontSize = 440;
         }
         const fontName = 'Oswald';
 

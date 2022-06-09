@@ -102,7 +102,7 @@ def login():
         if user:
             if check_password_hash(user.password, login_form.password.data):
                 login_user(user)
-                return redirect(url_for('home'))
+                return redirect(url_for('all_posts'))
             else:
                 flash("Incorrect password")
                 return render_template('login.html', form=login_form)
@@ -137,7 +137,7 @@ def make_post():
 @app.route('/all_posts')
 def all_posts():
     page = request.args.get('page', 1, type=int)
-    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page=page, per_page=4)
+    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page=page, per_page=10)
 
     return render_template('posts.html', posts=posts)
 
@@ -165,7 +165,7 @@ def tag_articles():
     page = request.args.get('page', 1, type=int)
     tag = request.args.get('tag')
     posts = BlogPost.query.where(BlogPost.tags.like(f"%{tag}%")).order_by(BlogPost.id.desc()).paginate(page=page,
-                                                                                                       per_page=4)
+                                                                                                       per_page=10)
 
     return render_template('posts.html', posts=posts, tag=tag)
 

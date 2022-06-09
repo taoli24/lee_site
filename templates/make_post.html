@@ -9,7 +9,6 @@
         {% endif %}
         <div class="mt-4">
             <form method="post" novalidate class="my-form post-form">
-
                 {{ form.csrf_token }}
                 <div>
                     {{ form.title.label }}
@@ -56,6 +55,4 @@
         </div>
     </section>
 </main>
-
-
 {% include 'footer.html' %}

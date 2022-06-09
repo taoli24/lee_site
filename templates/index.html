@@ -34,7 +34,7 @@
         <div class="project" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
             <p class="feature-project-title">Tonic Devs</p>
             <div class="project-card">
-                <div class="project-image">
+                <div class="project-image white-tint">
                     <img src="../static/images/tonicdevs.PNG" alt="tonicdevs">
                     <div class="project-image-overlay">
                         <a href="#" class="project-link btn-glow">GITHUB</a>
@@ -63,7 +63,7 @@
         <div class="project project-second" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
             <p class="feature-project-title">Data Analysis and Machine Learning</p>
             <div class="project-card">
-                <div class="project-image">
+                <div class="project-image white-tint">
                     <img src="../static/images/data.PNG" alt="data-and-ml">
                     <div class="project-image-overlay">
                         <a href="#" class="project-link btn-glow">GITHUB</a>
@@ -73,9 +73,9 @@
                 <div class="project-feature">
 
                     <div class="feature-project-description">
-                        <p>A web project for my imaginary dev team called Tonic Devs. The web project has a
-                            complete user system, which user can register, login, logout, make blog posts and
-                            comments. Posts can also be filtered by tags. </p>
+                        <p>Melted cheese airedale macaroni cheese. Cauliflower cheese lancashire macaroni cheese
+                            macaroni cheese cow pecorino st. agur blue cheese say cheese. Who moved my cheese dolcelatte
+                            blue castello croque monsieur stinking bishop lancashire fondue babybel.  </p>
                     </div>
                     <ul class="project-tools-used">
                         <li>Python</li>
@@ -88,36 +88,69 @@
                 </div>
             </div>
         </div>
+        <div class="project" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+            <p class="feature-project-title">Build to survive</p>
+            <div class="project-card">
+                <div class="project-image white-tint">
+                    <img src="../static/images/roblox.jpg" alt="tonicdevs">
+                    <div class="project-image-overlay">
+                        <a href="#" class="project-link btn-glow">GITHUB</a>
+                        <a href="#" class="project-link btn-glow">LIVE</a>
+                    </div>
+                </div>
+
+
+                <div class="project-feature">
+                    <div class="feature-project-description">
+                        <p>St. agur blue cheese fromage pepper jack. Stinking bishop babybel cheese slices roquefort
+                            everyone loves goat bavarian bergkase port-salut. Say cheese fondue lancashire parmesan
+                            cheese strings croque monsieur parmesan boursin. Cheeseburger melted cheese bocconcini. </p>
+                    </div>
+                    <ul class="project-tools-used">
+                        <li>Roblox Studio</li>
+                        <li>Lua</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="about-section indent-left" id="about-section">
         <h2 data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" class="section-heading"><span
                 class="number">02. </span>About me:</h2>
-        <div class="about-section-content" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
-            <div class="about-me-description">
-                <p>Hi, My name is Li. I am a canberra based developer who has a strong passion for web development
-                    and
-                    data
-                    science using python.
-                </p><br>
-                <p>My passion for web development start in 2021 when I decided to make a dev
-                    page
-                    for
-                    my imaginary dev team - Tonic Devs, which has certainly taught me a lot from basic html, css to
-                    using flask to
-                    handle user requests and dealing with databases.
-                </p>
-            </div>
-            <div class="education indent-left">
-                <h2 class="education-heading">Education and training:</h2>
-                <ul class="education-lists">
-                    <li class="ml-2">Google IT Automation with python professional certificate 2022</li>
-                    <li class="ml-2">Data scientist with python 2021 - Datacamp</li>
-                    <li class="ml-2">Bachelor of Medical science 2020 - University of Canberra</li>
-                    <li class="ml-2">Bachelor of Information Technology 2008 - University of Canberra</li>
-                </ul>
+        <div class="about-section-container" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000">
+            <div class="about-section-content">
+                <div class="about-me-description">
+                    <p>Hi, My name is Li. I am a canberra based developer who has a strong passion for web development
+                        and
+                        data
+                        science using python.
+                    </p><br>
+                    <p>My passion for web development start in 2021 when I decided to make a dev
+                        page
+                        for
+                        my imaginary dev team - Tonic Devs, which has certainly taught me a lot from basic html, css to
+                        using flask to
+                        handle user requests and dealing with databases.
+                    </p>
+                </div>
+                <div class="education indent-left">
+                    <h2 class="education-heading">Education and training:</h2>
+                    <ul class="education-lists">
+                        <li class="ml-2">Google IT Automation with python professional certificate 2022</li>
+                        <li class="ml-2">Data scientist with python 2021 - Datacamp</li>
+                        <li class="ml-2">Bachelor of Medical science 2020 - University of Canberra</li>
+                        <li class="ml-2">Bachelor of Information Technology 2008 - University of Canberra</li>
+                    </ul>
 
+                </div>
+                <a href="{{ url_for('download_file') }}" class="resume-download-link"><i
+                        class="fa-solid fa-file-lines"></i><span class="download-text">Download my resume</span></a>
             </div>
-            <a href="{{ url_for('download_file') }}" class="resume-download-link"><i class="fa-solid fa-file-lines"></i><span class="download-text">Download my resume</span></a>
+            <div class="profile">
+                <div class="profile-image-container white-tint">
+                    <img src="../static/images/profile.jpg" alt="Li">
+                </div>
+            </div>
         </div>
     </section>
     <section class="tools-section" id="tools-section">
@@ -145,9 +178,10 @@
             <div class="contact-description">
                 <p><span>Hey!</span> Thank you for visiting my portfolio website. If you ever want to have a quick
                     chat about
-                    something or just want to grab a coffee together, you can send me a message using the form or email me using the link below.</p>
+                    something or just want to grab a coffee together, you can send me a message using the form or email
+                    me using the link below.</p>
                 <div class="email-link ml-2">
-                    <a href="mailto:gujie713@gmail.com" ><i class="fa-solid fa-envelope"></i><span class="email-text">leelee0876452@gmail.com</span></a>
+                    <a href="mailto:gujie713@gmail.com"><i class="fa-solid fa-envelope"></i><span class="email-text">leelee0876452@gmail.com</span></a>
                 </div>
             </div>
             <form method="post" class="contact-form my-form">
