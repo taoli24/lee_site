@@ -39,7 +39,7 @@ class User(UserMixin, db.Model):
 class BlogPost(db.Model):
     __tablename__ = 'blog_post'
     id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.String(250), db.ForeignKey('users.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     author = db.relationship('User', back_populates='posts')
     title = db.Column(db.String(250), nullable=False)
     subtitle = db.Column(db.String(250), nullable=False)
