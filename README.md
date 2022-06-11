@@ -4,12 +4,29 @@ This website is live at [http://www.leelee.cc](http://www.leelee.cc). You may go
 
 All assets and source codes are hosted at [https://github.com/taoli24/lee_site](https://github.com/taoli24/lee_site). <br>
 
+This local version use sqlite as database for storing user and blog posts, in which it has one user (site owner) and 6 articles. <br>
+
+You may create more articles if you log in with:
+
+* Username: admin@test.com
+* Password: 1234567890
+
+The live version uses upgraded postgresql as database, it has been set up with different username and password.
+
+
 ## Purpose <hr>
 
 The purpose of this website is to demonstrate and showcase skills, ability and experience to potential employers.
 
-Target audience
 
+
+## DB Structure <hr>
+#### users table
+![users table](./docs/db_users_table.png)
+#### posts table
+![posts table](./docs/db_posts_table.png)
+
+## Features and Functionality <hr>
 #### Features
 * Home page contains some personal info, skills and projects that I have worked in the past.
 * Footer contains links to social platform and GitHub
