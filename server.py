@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, abort, flash, send_file
+from flask import Flask, render_template, request, redirect, url_for, abort, flash, send_file, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_ckeditor import CKEditor
 import datetime as dt
@@ -7,12 +7,18 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from functools import wraps
 from forms import LoginForm, PostForm
 import itertools
+import os
+
+secret_key = os.environ.get('SECRET_KEY')
+uri = os.environ.get("DATABASE_URL")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogs.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'thisissecret'
+app.config['SECRET_KEY'] = secret_key
 app.config['CKEDITOR_ENABLE_CODESNIPPET'] = True
 
 db = SQLAlchemy(app)
@@ -43,18 +49,26 @@ class BlogPost(db.Model):
     tags = db.Column(db.String(250), nullable=True)
 
 
-# def create_admin():
-#     new_user = User(
-#         email='gujie713@gmail.com',
-#         name='Li Tao',
-#         role='Admin',
-#         password=generate_password_hash('password', method="pbkdf2:sha256", salt_length=8)
-#     )
-#     db.session.add(new_user)
-#     db.session.commit()
-#
-#
-# create_admin()
+db.create_all()
+
+
+# HTTP POST - Create admin user
+@app.route('/create_admin', methods=['POST'])
+def create_admin():
+    if User.query.get(1):
+        return jsonify(response={"Failed": "Unauthorized"})
+    try:
+        new_user = User(
+            email=request.args.get('email'),
+            name=request.args.get('name'),
+            role=request.args.get('role'),
+            password=generate_password_hash(request.args.get('password'), method="pbkdf2:sha256", salt_length=8)
+        )
+        db.session.add(new_user)
+        db.session.commit()
+    except Exception:
+        return jsonify(response={'error': 'Fail to create user'}), 404
+    return jsonify(response={"success": "Successfully added the new user."})
 
 
 @login_manager.user_loader
