@@ -32,6 +32,12 @@ body {
     gap: 22vh;
 }
 
+/* Remove rounded corners on ios devices*/
+input, textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 /*********** Reusable css ***********/
 
 .indent-left {
@@ -75,6 +81,8 @@ body {
     font-family: 'Fira Mono', monospace;
     font-weight: bold;
     cursor: pointer;
+    /* Prevent apple device using default apple style */
+    background-color: #e9ecef;
 }
 
 .btn-small {
