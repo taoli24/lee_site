@@ -49,7 +49,7 @@ class BlogPost(db.Model):
     tags = db.Column(db.String(250), nullable=True)
 
 
-db.create_all()
+# db.create_all()
 
 
 # HTTP POST - Create admin user
