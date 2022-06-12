@@ -43,7 +43,7 @@ class BlogPost(db.Model):
     author = db.relationship('User', back_populates='posts')
     title = db.Column(db.String(250), nullable=False)
     subtitle = db.Column(db.String(250), nullable=False)
-    body = db.Column(db.TEXT, nullable=False)
+    body = db.Column(db.String, nullable=False)
     date = db.Column(db.String(250), nullable=False)
     image = db.Column(db.String(250), nullable=False)
     tags = db.Column(db.String(250), nullable=True)
